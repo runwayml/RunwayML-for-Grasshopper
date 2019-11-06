@@ -1,0 +1,8 @@
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\bin\Runway.dll
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\bin\Runway.pdb
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\obj\Debug\Runway.csprojAssemblyReference.cache
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\obj\Debug\Runway.csproj.CoreCompileInputs.cache
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\obj\Debug\Runway.dll
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\obj\Debug\Runway.pdb
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\obj\Debug\Runway.Properties.Resources.resources
+C:\Users\vahid\Desktop\plugin andaji\Runway\Runway\Runway\obj\Debug\Runway.csproj.GenerateResource.cache
