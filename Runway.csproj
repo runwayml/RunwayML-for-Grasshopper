@@ -62,8 +62,9 @@
   <ItemGroup>
     <Compile Include="component\filterData.cs" />
     <Compile Include="component\DecomposeImage.cs" />
-    <Compile Include="component\imagesampler.cs" />
+    <Compile Include="component\showimage.cs" />
     <Compile Include="component\ConvertImage.cs" />
+    <Compile Include="component\TakePic.cs" />
     <Compile Include="component\RecomposeImage.cs" />
     <Compile Include="component\RunwayComponent.cs" />
     <Compile Include="component\Senddata.cs" />
@@ -110,6 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\takimage icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

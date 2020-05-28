@@ -51,7 +51,7 @@ namespace Runway
             get
             {
                 //Return a string representing your preferred contact details.
-                return "vahid.azizi.gmail.com";
+                return "vahid.azizi.1992@gmail.com";
             }
         }
     }
