@@ -58,15 +58,15 @@ namespace Runway
                     string Data = "\"" + data + "\"}";
                     string json = Name + Data;
                     streamWriter.Write(json);
-                    DA.SetData(0, json);
+                   
                 }
 
                 var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                    
 
+                    DA.SetData(0, result);
                 }
             }
 

@@ -68,7 +68,9 @@ namespace Runway
             pManager.AddIntegerParameter("Alpha", "A", "Alpha channel", GH_ParamAccess.list);
             pManager.AddIntegerParameter("Width", "W", "Width channel", GH_ParamAccess.item);
             pManager.AddIntegerParameter("Height", "H", "Height channel", GH_ParamAccess.item);
-
+            pManager.AddBooleanParameter("save", "s", "Save image", GH_ParamAccess.item,false);
+            pManager.AddTextParameter("Address", "Ad", "save picture", GH_ParamAccess.item,"");
+            pManager.AddTextParameter("file name", "n", "fine name", GH_ParamAccess.item,"default");
         }
 
        
@@ -85,13 +87,19 @@ namespace Runway
             List<int> alpha = new List<int>();
             int width = 100;
             int height = 100;
-            int q = width * height;
+            bool blooansave = false;
+            string addressPhoto = "";
+            string namePhoto= "";
             DA.GetDataList(0, red);
             DA.GetDataList(1, green);
             DA.GetDataList(2, blue);
             DA.GetDataList(3, alpha);
             DA.GetData(4, ref width);
             DA.GetData(5, ref height);
+            DA.GetData(6, ref blooansave);
+            DA.GetData(7, ref addressPhoto);
+            DA.GetData(8, ref namePhoto);
+
             Bitmap output = new Bitmap(width, height);
 
             for (int x = 0; x < width; x++)
@@ -118,6 +126,12 @@ namespace Runway
             byte[] outputt = (byte[])converter.ConvertTo(output, typeof(byte[]));
             string imagebase64 = Convert.ToBase64String(outputt);
             DA.SetData(0, imagebase64);
+            if (blooansave)
+            {
+                string finalAddress = addressPhoto + @"\" + namePhoto+".jpeg"; 
+                output.Save(finalAddress);
+            }
+
         }
 
         protected override System.Drawing.Bitmap Icon

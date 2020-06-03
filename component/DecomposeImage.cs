@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.Serialization.Formatters;
 using Grasshopper.Kernel;
 
 
@@ -25,6 +26,8 @@ namespace Runway
 
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
+            pManager.AddTextParameter("color", "c", "color", GH_ParamAccess.item);
+            pManager.AddTextParameter("black & white", "bw", "black & white", GH_ParamAccess.item);
             pManager.AddTextParameter("Red", "R", "Red channel", GH_ParamAccess.item);
             pManager.AddTextParameter("Green", "G", "Green channel", GH_ParamAccess.item);
             pManager.AddTextParameter("Blue", "B", "Blue channel", GH_ParamAccess.item);
@@ -42,6 +45,8 @@ namespace Runway
             Boolean Reset = false;
             int pixwidth = 0;
             int pixheight = 0;
+            List<string> color = new List<string>();
+            List<double> blakWhite = new List<double>();
             List<int> red = new List<int>();
             List<int> green = new List<int>();
             List<int> blue = new List<int>();
@@ -80,12 +85,17 @@ namespace Runway
                         for (int j = 0; j < bitImage.Height; j++)
                         {
                             Color clr = bmp.GetPixel(i, j);
-                            int redget = clr.R;
-                            red.Add(redget);
-                            int greenget = clr.G;
-                            green.Add(greenget);
-                            int blueget = clr.B;
-                            blue.Add(blueget);
+                           
+                            color.Add(clr.R+","+ clr.G+","+clr.B);
+                            double redd = double.Parse(clr.R.ToString());
+                            double bulee = double.Parse(clr.B.ToString());
+                            double grenn = double.Parse(clr.G.ToString());
+                            double sum = redd+bulee+grenn;
+                            double remap =sum/700;
+                            blakWhite.Add(remap);
+                            red.Add(clr.R);
+                            green.Add(clr.G);
+                            blue.Add(clr.B);
                             alpha.Add(255);
 
                         }
@@ -97,12 +107,14 @@ namespace Runway
             }
 
             //set data to out put component
-            DA.SetDataList(0, red);
-            DA.SetDataList(1, green);
-            DA.SetDataList(2, blue);
-            DA.SetDataList(3, alpha);
-            DA.SetData(4, pixwidth);
-            DA.SetData(5, pixheight);
+            DA.SetDataList(0, color);
+            DA.SetDataList(1, blakWhite);
+            DA.SetDataList(2, red);
+            DA.SetDataList(3, green);
+            DA.SetDataList(4, blue);
+            DA.SetDataList(5, alpha);
+            DA.SetData(6, pixwidth);
+            DA.SetData(7, pixheight);
 
         }
         protected override System.Drawing.Bitmap Icon
